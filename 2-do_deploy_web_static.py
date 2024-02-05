@@ -19,7 +19,11 @@ def do_deploy(archive_path):
 
         # Extract archive to the folder /data/web_static/releases/<filename>
         filename = archive_path.split('/')[-1]
-        release_folder = "/data/web_static/releases/{}".format(filename.split('.')[0])
+        release_folder = (
+            "/data/web_static/releases/{}"
+            .format(filename.split('.')[0])
+        )
+
         run("mkdir -p {}".format(release_folder))
         run("tar -xzf /tmp/{} -C {}".format(filename, release_folder))
 
@@ -39,6 +43,5 @@ def do_deploy(archive_path):
         print("New version deployed!")
         return True
 
-    except Exception as e:
-        print(e)
+    except:
         return False
