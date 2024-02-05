@@ -23,12 +23,12 @@ def do_pack():
     local("mkdir -p versions")
 
     # Generate the archive filename using the current timestamp
-    timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-    archive_name = "web_static_{}.tgz".format(timestamp)
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    archive_name = f"web_static_{timestamp}.tgz"
 
     # Compress the contents of the web_static folder into the archive
     try:
-        local("tar -cvzf versions/{} web_static".format(archive_name))
+        local(f"tar -cvzf versions/{archive_name} web_static")
         print("web_static packed: versions/{}".format(archive_name))
         return "versions/{}".format(archive_name)
     except Exception as e:
