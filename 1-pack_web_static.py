@@ -1,8 +1,16 @@
 #!/usr/bin/python3
+"""
+This module defines a Fabric script for packing the contents of the web_static
+folder into a .tgz archive. The main function, do_pack(), generates an archive
+filename based on the current timestamp and compresses the web_static contents.
 
+Functions:
+    do_pack(): Generates a .tgz archive, returns the archive path if successful
+"""
 from fabric.api import local
 from datetime import datetime
 import os
+
 
 def do_pack():
     """
