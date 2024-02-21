@@ -6,13 +6,14 @@ This script starts a Flask web application with the following routes:
 2. /hbnb route: Displays the message "HBNB"
 3. /c/<text> route: Displays "C " followed by the value of the text variable,
    replacing underscores (_) with spaces.
-4. /python/(<text>) route: Displays "Python " followed by the value of the text variable,
-   replacing underscores (_) with spaces. The default value of text is "is cool".
+4. /python/(<text>) route: Displays "Python " followed by the value of
+    the text variable, replacing underscores (_) with spaces.
+    The default value of text is "is cool".
 5. /number/<n> route: Displays "n is a number" only if n is an integer.
-6. /number_template/<n> route: Displays an HTML page with an H1 tag containing "Number: n"
-   only if n is an integer.
-7. /number_odd_or_even/<n> route: Displays an HTML page with an H1 tag indicating whether
-   "Number: n is even|odd" only if n is an integer.
+6. /number_template/<n> route: Displays an HTML page with an H1 tag
+    containing "Number: n" only if n is an integer.
+7. /number_odd_or_even/<n> route: Displays an HTML page with an H1 tag
+    indicating whether "Number: n is even|odd" only if n is an integer.
 
 """
 
@@ -83,7 +84,8 @@ def number_route(n):
         n (int): The integer parameter from the URL.
 
     Returns:
-        str: The message "<n> is a number" if n is an integer, else a 404 error.
+        str: The message "<n> is a number"
+            if n is an integer, else a 404 error.
     """
     if isinstance(n, int):
         return '{} is a number'.format(n)
@@ -100,7 +102,8 @@ def number_template_route(n):
         n (int): The integer parameter from the URL.
 
     Returns:
-        HTML: An HTML page with an H1 tag containing "Number: n" if n is an integer.
+        HTML: An HTML page with an H1 tag containing "Number: n"
+            if n is an integer.
     """
     if isinstance(n, int):
         return render_template('5-number.html', n=n)
@@ -117,11 +120,15 @@ def number_odd_or_even_route(n):
         n (int): The integer parameter from the URL.
 
     Returns:
-        HTML: An HTML page with an H1 tag indicating whether "Number: n is even|odd"
-               if n is an integer.
+        HTML: An HTML page with an H1 tag indicating whether
+        "Number: n is even|odd" if n is an integer.
     """
     if isinstance(n, int):
-        return render_template('6-number_odd_or_even.html', n=n, result='even' if n % 2 == 0 else 'odd')
+        return render_template(
+            '6-number_odd_or_even.html',
+            n=n,
+            result='even' if n % 2 == 0 else 'odd'
+        )
     else:
         abort(404)
 
